@@ -1,3 +1,12 @@
+/*
+ * @Author: yaoxingpu yaoxpu@163.com
+ * @Date: 2023-10-09 15:29:06
+ * @LastEditors: yaoxingpu yaoxpu@163.com
+ * @LastEditTime: 2023-10-09 15:58:18
+ * @FilePath: /vue-vben-admin/src/main.ts
+ * @Description:
+ *
+ */
 import 'uno.css';
 import '@/design/index.less';
 import '@/components/VxeTable/src/css/index.scss';
@@ -7,6 +16,7 @@ import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 
+import { invoke } from '@tauri-apps/api';
 import { registerGlobComp } from '@/components/registerGlobComp';
 import { setupGlobDirectives } from '@/directives';
 import { setupI18n } from '@/locales/setupI18n';
@@ -19,6 +29,7 @@ import { setupStore } from '@/store';
 import App from './App.vue';
 
 async function bootstrap() {
+  invoke('greet', { name: 'yaoxingpu' }).then((res) => console.log(res));
   const app = createApp(App);
 
   // Configure store
